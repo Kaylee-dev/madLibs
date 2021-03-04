@@ -5,13 +5,13 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         if(empty($_POST["animal"])){
-            $animalError = " is required";
+            $animalError = "required";
         } else {
             $animal = test_input($_POST["animal"]);
         }
 
         if(empty($_POST["person"])){
-            $personError = " is required";
+            $personError = "required";
         } else {
             $person = test_input($_POST["person"]);
         }
@@ -53,6 +53,7 @@
         }
 
     }
+
      // test_input is een functie die voor je de code checkt op speciale tekens
     function test_input($data) {
         $data = trim($data);
@@ -82,7 +83,7 @@
             </div>
 			<div class="inputs">
 				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
+                
                 <label>Welk dier zou je nooit als huisdier willen hebben?</label>
                 <input type="text" id="animal" name="animal" value="<?php echo $animal ?>">
                 <span class="error">* <?php echo $animalError;?></span>
@@ -115,17 +116,27 @@
                 <input type="text" id="do" name="do" value="<?php echo $do ?>">
                 <span class="error">* <?php echo $doError;?></span>
                 <br>
+				
 				<input type="submit" id="submit" name="submit" value="Submit">
                 </form>
 			</div>
 		</div>
         <div class="input">
             <h2>Verhaal:</h2>
+            <?php
+            if($animalError || $personError || $countryError || $boredError|| $playError || $teacherError || $buyError || $doError  == true){
+                "";
+            };
+            ?>
             <div class="story">
                 <?php if ($_SERVER["REQUEST_METHOD"] == "POST"){ ?>
                     Er heerst paniek in het koninkrijk <?php echo $_POST["country"];?>. Koning <?php echo $_POST["teacher"];?> is ten einde raad en als koning <?php echo $_POST["teacher"];?> ten einde raad is, dan roept hij zijn ten-einde-raadsheer <?php echo $_POST["person"];?>. <br> "<?php echo $_POST["teacher"];?>!" Het is een ramp! Het is een schande!" <br> "Sire, Majesteit. Uwe luidruchtigheid, wat is er aan de hand?" <br>"Mijn <?php echo $_POST["animal"];?> is verdwenen! Zo maar, zonderwaarschuwing. En ik had net <?php echo $_POST["play"];?> voor hem gekocht!" <br> "Majesteit, uw <?php echo $_POST["animal"];?> komt vast vanzelf weer terug!" <br>"Ja, da's leuk en aardig, maar hoe moet ik in de tussentijd <?php echo $_POST["do"];?> leren?" <br> "Maar Sire, daar kunt u toch uw <?php echo $_POST["buy"];?> voor gebruiken." <br>"<?php echo $_POST["person"];?>, je hebt helemaal gelijk! Wat zou ik doen als ik jou niet had" <br> "Mij <?php echo $_POST["bored"];?>, Sire".
                 <?php } ?>
+           
+
             </div>
+
         </div>
+        
     </body>
 </html>
