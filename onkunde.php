@@ -1,59 +1,53 @@
 <?php
 // Lege variabelen
-    $animal =  $person = $country = $bored = $play = $teacher =  $buy = $do = "";
-    $animalError = $personError = $countryError = $boredError = $playError = $teacherError = $buyError = $doError = "";
+    $skill =  $person = $number = $vacation = $personal =  $worst = $bad ="";
+    $skillError = $personError = $numberError = $vacationError = $personalError = $worstError = $badError = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(empty($_POST["animal"])){
-            $animalError = "required";
+        if(empty($_POST["skill"])){
+            $skillError = " is required";
         } else {
-            $animal = test_input($_POST["animal"]);
+            $skill = test_input($_POST["skill"]);
         }
 
         if(empty($_POST["person"])){
-            $personError = "required";
+            $personError = " is required";
         } else {
             $person = test_input($_POST["person"]);
         }
         
-        if(empty($_POST["country"])){
-            $countryError = " is required";
+        if(empty($_POST["number"])){
+            $numberError = " is required";
         } else {
-            $country = test_input($_POST["country"]);
+            $number = test_input($_POST["number"]);
         }
 
-        if(empty($_POST["bored"])){
-            $boredError = " is required";
+        if(empty($_POST["vacation"])){
+            $vacationError = " is required";
         } else {
-            $bored = test_input($_POST["bored"]);
+            $vacation = test_input($_POST["vacation"]);
         }
 
-        if(empty($_POST["play"])){
-            $playError = " is required";
+        if(empty($_POST["personal"])){
+            $personalError = " is required";
         } else {
-            $play = test_input($_POST["play"]);
+            $personal = test_input($_POST["personal"]);
         }
 
-        if(empty($_POST["teacher"])){
-            $teacherError = " is required";
+        if(empty($_POST["worst"])){
+            $worstError = " is required";
         } else {
-            $teacher = test_input($_POST["teacher"]);
+            $worst = test_input($_POST["worst"]);
         }
 
-        if(empty($_POST["buy"])){
-            $buyError = " is required";
+        
+        if(empty($_POST["bad"])){
+            $badError = " is required";
         } else {
-            $buy = test_input($_POST["buy"]);
-        }
-
-        if(empty($_POST["do"])){
-            $doError = " is required";
-        } else {
-            $do = test_input($_POST["do"]);
+            $bad = test_input($_POST["bad"]);
         }
 
     }
-
      // test_input is een functie die voor je de code checkt op speciale tekens
     function test_input($data) {
         $data = trim($data);
@@ -81,62 +75,52 @@
                     <a href="onkunde.php"><li>Onkunde</li></a>
                 </ul>
             </div>
-			<div class="inputs">
-				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                
-                <label>Welk dier zou je nooit als huisdier willen hebben?</label>
-                <input type="text" id="animal" name="animal" value="<?php echo $animal ?>">
-                <span class="error">* <?php echo $animalError;?></span>
-                <br>
-                <label>Wie is de belangerijkste persoon in je leven?</label>
-                <input type="text" id="person" name="person" value="<?php echo $person ?>">
-                <span class="error">* <?php echo $personError;?></span>
-                <br>
-                <label>In welk land zou je graag willen wonen?</label>
-                <input type="text" id="country" name="country" value="<?php echo $country ?>">
-                <span class="error">* <?php echo $countryError;?></span>
-                <br>
-                <label>Wat doe je als je je verveelt?</label>
-                <input type="text" id="bored" name="bored" value="<?php echo $bored ?>">
-                <span class="error">* <?php echo $boredError;?></span>
-                <br>
-                <label>Met welk speelgoed speelde je als kind het meest?</label>
-                <input type="text" id="play" name="play" value="<?php echo $play ?>">
-                <span class="error">* <?php echo $playError;?></span>
-                <br>
-                <label>Bij welke docent spijbel je het liefst?</label>
-                <input type="text" id="teacher" name="teacher" value="<?php echo $teacher ?>">
-                <span class="error">* <?php echo $teacherError;?></span>
-                <br>
-                <label>Als je 100.000 had, wat zou je dan kopen?</label>
-                <input type="text" id="buy" name="buy" value="<?php echo $buy ?>">
-                <span class="error">* <?php echo $buyError;?></span>
-                <br>
-                <label>Wat is je favoriete bezigheid?</label>
-                <input type="text" id="do" name="do" value="<?php echo $do ?>">
-                <span class="error">* <?php echo $doError;?></span>
-                <br>
-				
-				<input type="submit" id="submit" name="submit" value="Submit">
-                </form>
-			</div>
+            <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && $skillError == "" && $personError == "" && $numberError == "" && $badError == "" && $vacationError == "" && $personalError == "" && $worstError == "" && $doError == "" ){ ?>
+                <div class="input">
+                    <h2>Verhaal:</h2>
+                    <br>
+                    <div class="story">
+                            Er zijn veel mensen die niet kunnen <?php echo $_POST["skill"];?>. Neem nou <?php echo $_POST["person"];?>. Zelfs met de hulp van een <?php echo $_POST["vacation"];?> of zelfs <?php echo $_POST["number"];?> kan 
+                            <?php echo $_POST["person"];?> niet <?php echo $_POST["skill"];?>. 
+                            Dat heeft niet te maken met een gebrek aan <?php echo $_POST["personal"];?>, maar met een teveel aan <?php echo $_POST["worst"];?>. Te veel <?php echo $_POST["worst"];?> leidt tot <?php echo $_POST["bad"];?> en dat is niet goed als je wilt <?php echo $_POST["skill"];?>. Helaas voor <?php echo $_POST["person"];?>.
+                    </div>
+                </div>
+            <?php } else { ?>
+                <div class="inputs">
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
+                    <label>Wat zou je graag willen kunnen?</label>
+                    <input type="text" id="skill" name="skill" value="<?php echo $skill ?>">
+                    <span class="error">* <?php echo $skillError;?></span>
+                    <br>
+                    <label>Met welk persoon kun je goed opschieten?</label>
+                    <input type="text" id="person" name="person" value="<?php echo $person ?>">
+                    <span class="error">* <?php echo $personError;?></span>
+                    <br>
+                    <label>Wat is je favoriete getal?</label>
+                    <input type="text" id="number" name="number" value="<?php echo $number ?>">
+                    <span class="error">* <?php echo $numberError;?></span>
+                    <br>
+                    <label>Wat heb je altijd bij je als je op vakantie gaat?</label>
+                    <input type="text" id="vacation" name="vacation" value="<?php echo $vacation ?>">
+                    <span class="error">* <?php echo $vacationError;?></span>
+                    <br>
+                    <label>Wat is je beste persoonlijke eigenschap?</label>
+                    <input type="text" id="personal" name="personal" value="<?php echo $personal ?>">
+                    <span class="error">* <?php echo $personalError;?></span>
+                    <br>
+                    <label>Wat is je slechtste persoonlijke eigenschap?</label>
+                    <input type="text" id="worst" name="worst" value="<?php echo $worst ?>">
+                    <span class="error">* <?php echo $worstError;?></span>
+                    <br>
+                    <label>Wat is het ergste dat je kan overkomen?</label>
+                    <input type="text" id="bad" name="bad" value="<?php echo $bad ?>">
+                    <span class="error">* <?php echo $badError;?></span>
+                    <br>
+                    <input type="submit" id="submit" name="submit" value="Submit">
+                    </form>
+                </div>
+            <?php } ?>
 		</div>
-        <div class="input">
-            <h2>Verhaal:</h2>
-            <?php
-            if($animalError || $personError || $countryError || $boredError|| $playError || $teacherError || $buyError || $doError  == true){
-                "";
-            };
-            ?>
-            <div class="story">
-                <?php if ($_SERVER["REQUEST_METHOD"] == "POST"){ ?>
-                    Er heerst paniek in het koninkrijk <?php echo $_POST["country"];?>. Koning <?php echo $_POST["teacher"];?> is ten einde raad en als koning <?php echo $_POST["teacher"];?> ten einde raad is, dan roept hij zijn ten-einde-raadsheer <?php echo $_POST["person"];?>. <br> "<?php echo $_POST["teacher"];?>!" Het is een ramp! Het is een schande!" <br> "Sire, Majesteit. Uwe luidruchtigheid, wat is er aan de hand?" <br>"Mijn <?php echo $_POST["animal"];?> is verdwenen! Zo maar, zonderwaarschuwing. En ik had net <?php echo $_POST["play"];?> voor hem gekocht!" <br> "Majesteit, uw <?php echo $_POST["animal"];?> komt vast vanzelf weer terug!" <br>"Ja, da's leuk en aardig, maar hoe moet ik in de tussentijd <?php echo $_POST["do"];?> leren?" <br> "Maar Sire, daar kunt u toch uw <?php echo $_POST["buy"];?> voor gebruiken." <br>"<?php echo $_POST["person"];?>, je hebt helemaal gelijk! Wat zou ik doen als ik jou niet had" <br> "Mij <?php echo $_POST["bored"];?>, Sire".
-                <?php } ?>
-           
-
-            </div>
-
-        </div>
-        
     </body>
 </html>

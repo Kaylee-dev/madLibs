@@ -80,52 +80,53 @@
                     <a href="onkunde.php"><li>Onkunde</li></a>
                 </ul>
             </div>
-			<div class="inputs">
-				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && $animalError == "" && $personError == "" && $countryError == "" && $boredError == "" && $playError == "" && $teacherError == "" && $buyError == "" && $doError == "" ){ ?>
+                <div class="input">
+                    <h2>Verhaal:</h2>
+                    <div class="story">
+                            Er heerst paniek in het koninkrijk <?php echo $_POST["country"];?>. Koning <?php echo $_POST["teacher"];?> is ten einde raad en als koning <?php echo $_POST["teacher"];?> ten einde raad is, dan roept hij zijn ten-einde-raadsheer <?php echo $_POST["person"];?>. <br> "<?php echo $_POST["teacher"];?>!" Het is een ramp! Het is een schande!" <br> "Sire, Majesteit. Uwe luidruchtigheid, wat is er aan de hand?" <br>"Mijn <?php echo $_POST["animal"];?> is verdwenen! Zo maar, zonderwaarschuwing. En ik had net <?php echo $_POST["play"];?> voor hem gekocht!" <br> "Majesteit, uw <?php echo $_POST["animal"];?> komt vast vanzelf weer terug!" <br>"Ja, da's leuk en aardig, maar hoe moet ik in de tussentijd <?php echo $_POST["do"];?> leren?" <br> "Maar Sire, daar kunt u toch uw <?php echo $_POST["buy"];?> voor gebruiken." <br>"<?php echo $_POST["person"];?>, je hebt helemaal gelijk! Wat zou ik doen als ik jou niet had" <br> "Mij <?php echo $_POST["bored"];?>, Sire".
+                    </div>
+                </div>
+            <?php } else { ?>
+                <div class="inputs">
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-                <label>Welk dier zou je nooit als huisdier willen hebben?</label>
-                <input type="text" id="animal" name="animal" value="<?php echo $animal ?>">
-                <span class="error">* <?php echo $animalError;?></span>
-                <br>
-                <label>Wie is de belangerijkste persoon in je leven?</label>
-                <input type="text" id="person" name="person" value="<?php echo $person ?>">
-                <span class="error">* <?php echo $personError;?></span>
-                <br>
-                <label>In welk land zou je graag willen wonen?</label>
-                <input type="text" id="country" name="country" value="<?php echo $country ?>">
-                <span class="error">* <?php echo $countryError;?></span>
-                <br>
-                <label>Wat doe je als je je verveelt?</label>
-                <input type="text" id="bored" name="bored" value="<?php echo $bored ?>">
-                <span class="error">* <?php echo $boredError;?></span>
-                <br>
-                <label>Met welk speelgoed speelde je als kind het meest?</label>
-                <input type="text" id="play" name="play" value="<?php echo $play ?>">
-                <span class="error">* <?php echo $playError;?></span>
-                <br>
-                <label>Bij welke docent spijbel je het liefst?</label>
-                <input type="text" id="teacher" name="teacher" value="<?php echo $teacher ?>">
-                <span class="error">* <?php echo $teacherError;?></span>
-                <br>
-                <label>Als je 100.000 had, wat zou je dan kopen?</label>
-                <input type="text" id="buy" name="buy" value="<?php echo $buy ?>">
-                <span class="error">* <?php echo $buyError;?></span>
-                <br>
-                <label>Wat is je favoriete bezigheid?</label>
-                <input type="text" id="do" name="do" value="<?php echo $do ?>">
-                <span class="error">* <?php echo $doError;?></span>
-                <br>
-				<input type="submit" id="submit" name="submit" value="Submit">
-                </form>
-			</div>
+                    <label>Welk dier zou je nooit als huisdier willen hebben?</label>
+                    <input type="text" id="animal" name="animal" value="<?php echo $animal ?>">
+                    <span class="error">* <?php echo $animalError;?></span>
+                    <br>
+                    <label>Wie is de belangerijkste persoon in je leven?</label>
+                    <input type="text" id="person" name="person" value="<?php echo $person ?>">
+                    <span class="error">* <?php echo $personError;?></span>
+                    <br>
+                    <label>In welk land zou je graag willen wonen?</label>
+                    <input type="text" id="country" name="country" value="<?php echo $country ?>">
+                    <span class="error">* <?php echo $countryError;?></span>
+                    <br>
+                    <label>Wat doe je als je je verveelt?</label>
+                    <input type="text" id="bored" name="bored" value="<?php echo $bored ?>">
+                    <span class="error">* <?php echo $boredError;?></span>
+                    <br>
+                    <label>Met welk speelgoed speelde je als kind het meest?</label>
+                    <input type="text" id="play" name="play" value="<?php echo $play ?>">
+                    <span class="error">* <?php echo $playError;?></span>
+                    <br>
+                    <label>Bij welke docent spijbel je het liefst?</label>
+                    <input type="text" id="teacher" name="teacher" value="<?php echo $teacher ?>">
+                    <span class="error">* <?php echo $teacherError;?></span>
+                    <br>
+                    <label>Als je 100.000 had, wat zou je dan kopen?</label>
+                    <input type="text" id="buy" name="buy" value="<?php echo $buy ?>">
+                    <span class="error">* <?php echo $buyError;?></span>
+                    <br>
+                    <label>Wat is je favoriete bezigheid?</label>
+                    <input type="text" id="do" name="do" value="<?php echo $do ?>">
+                    <span class="error">* <?php echo $doError;?></span>
+                    <br>
+                    <input type="submit" id="submit" name="submit" value="Submit">
+                    </form>
+                </div>
+            <?php } ?>
 		</div>
-        <div class="input">
-            <h2>Verhaal:</h2>
-            <div class="story">
-                <?php if ($_SERVER["REQUEST_METHOD"] == "POST"){ ?>
-                    Er heerst paniek in het koninkrijk <?php echo $_POST["country"];?>. Koning <?php echo $_POST["teacher"];?> is ten einde raad en als koning <?php echo $_POST["teacher"];?> ten einde raad is, dan roept hij zijn ten-einde-raadsheer <?php echo $_POST["person"];?>. <br> "<?php echo $_POST["teacher"];?>!" Het is een ramp! Het is een schande!" <br> "Sire, Majesteit. Uwe luidruchtigheid, wat is er aan de hand?" <br>"Mijn <?php echo $_POST["animal"];?> is verdwenen! Zo maar, zonderwaarschuwing. En ik had net <?php echo $_POST["play"];?> voor hem gekocht!" <br> "Majesteit, uw <?php echo $_POST["animal"];?> komt vast vanzelf weer terug!" <br>"Ja, da's leuk en aardig, maar hoe moet ik in de tussentijd <?php echo $_POST["do"];?> leren?" <br> "Maar Sire, daar kunt u toch uw <?php echo $_POST["buy"];?> voor gebruiken." <br>"<?php echo $_POST["person"];?>, je hebt helemaal gelijk! Wat zou ik doen als ik jou niet had" <br> "Mij <?php echo $_POST["bored"];?>, Sire".
-                <?php } ?>
-            </div>
-        </div>
     </body>
 </html>
