@@ -7,17 +7,17 @@ body{
     background-color:#3B3A34;
 }
 
-.block{
-    padding: 20px;
-    width: 600px;
-    height: 500px;;
-    margin: auto;
-    background-color: white;
+h1{
+    color: white;
 }
 
-.inputs{
-    margin-bottom: 10px;
-    line-height: 5px;;
+.block{
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    width: 600px;
+    height: 500px;
+    background-color: white;
 }
 
 ul{
@@ -29,6 +29,7 @@ ul{
 li {
     display: inline-block;
     padding: 10px 30px;
+    color: white;
 }
 
 .menu{
@@ -45,4 +46,17 @@ li {
 #submit{
     margin-top: 20px; 
     padding: 8px;
+}
+
+.footer{
+    position: absolute;
+    bottom: 10px;
+    width: 600px;
+    height: 30px;
+    background-color: #3B3A34;
+}
+
+.footer > p{
+    margin-top: 5px;
+    color: white;
 }

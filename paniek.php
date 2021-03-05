@@ -83,6 +83,7 @@
             <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && $animalError == "" && $personError == "" && $countryError == "" && $boredError == "" && $playError == "" && $teacherError == "" && $buyError == "" && $doError == "" ){ ?>
                 <div class="input">
                     <h2>Verhaal:</h2>
+                    <br>
                     <div class="story">
                             Er heerst paniek in het koninkrijk <?php echo $_POST["country"];?>. Koning <?php echo $_POST["teacher"];?> is ten einde raad en als koning <?php echo $_POST["teacher"];?> ten einde raad is, dan roept hij zijn ten-einde-raadsheer <?php echo $_POST["person"];?>. <br> "<?php echo $_POST["teacher"];?>!" Het is een ramp! Het is een schande!" <br> "Sire, Majesteit. Uwe luidruchtigheid, wat is er aan de hand?" <br>"Mijn <?php echo $_POST["animal"];?> is verdwenen! Zo maar, zonderwaarschuwing. En ik had net <?php echo $_POST["play"];?> voor hem gekocht!" <br> "Majesteit, uw <?php echo $_POST["animal"];?> komt vast vanzelf weer terug!" <br>"Ja, da's leuk en aardig, maar hoe moet ik in de tussentijd <?php echo $_POST["do"];?> leren?" <br> "Maar Sire, daar kunt u toch uw <?php echo $_POST["buy"];?> voor gebruiken." <br>"<?php echo $_POST["person"];?>, je hebt helemaal gelijk! Wat zou ik doen als ik jou niet had" <br> "Mij <?php echo $_POST["bored"];?>, Sire".
                     </div>
@@ -127,6 +128,9 @@
                     </form>
                 </div>
             <?php } ?>
+            <div class="footer">
+                <p>© Kaylee van der Meijden, 2021</p>
+            </div>
 		</div>
     </body>
 </html>

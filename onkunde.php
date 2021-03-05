@@ -121,6 +121,9 @@
                     </form>
                 </div>
             <?php } ?>
+            <div class="footer">
+                <p>© Kaylee van der Meijden, 2021</p>
+            </div>
 		</div>
     </body>
 </html>
